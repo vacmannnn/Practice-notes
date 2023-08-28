@@ -12,8 +12,8 @@ Build artifacts of the course with COURSE_NAME
   -h, --help               print this help message and exit
 
 Examples:
-  $0 practice
-  $0 -o 'Конспекты по практикуму ЭВМ' practice
+  $0 practicum
+  $0 -o 'Конспекты по практикуму ЭВМ' practicum
 tac
 }
 
