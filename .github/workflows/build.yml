@@ -9,17 +9,9 @@ jobs:
     build:
         runs-on: ubuntu-latest
         container: asciidoctor/docker-asciidoctor
-        env:
-            RESULT_NAME: 'Конспект практикума'
-            BUILD_DIRECTORY: 'build'
         steps:
             - uses: actions/checkout@v3
-            - name: Build all courses
+            - name: Build course
               run: |
                 apk add --no-cache pandoc
-                /bin/sh -x ./scripts/build_course.sh -o '${{ env.BUILD_DIRECTORY }}'
-            - uses: actions/upload-artifact@v3
-              with:
-                name: ${{ env.RESULT_NAME }}
-                path: ${{ env.BUILD_DIRECTORY }}
-                if-no-files-found: error
+                bin/bash -x ./scripts/build_course.sh practicum
