@@ -1,0 +1,39 @@
+В данном репозитории находится конспект пар 1 семестра практикума на ЭВМ.
+
+== Сборка курса
+
+
+Для сборки `.pdf` из `.adoc` файлов используется https://docs.asciidoctor.org/pdf-converter/latest/[asciidoctor-pdf].
+
+Если `asciidoctor-pdf` не установлен локально, можно воспользоваться Docker-образом `asciidoctor/docker-asciidoctor`.
+Тогда все описанные ниже команды можно выполнить в Docker-контейнере так:
+
+[source,shell]
+----
+docker run --rm \
+    --user="$(id -u):$(id -g)" \
+    -v "$(pwd)":/documents/ \
+    asciidoctor/docker-asciidoctor <команда>
+----
+Примером команды может быть 
+[source,shell]
+----
+asciidoctor-pdf -r asciidoctor-mathematical -a mathematical-format=svg practicum/Course.adoc 
+----
+
+Чтобы выполнить сборку текста курса, необходимо запустить скрипт `./scripts/build_course.sh`, передав ему имя собираемого курса.
+Команда
+
+[source,shell]
+----
+./scripts/build_course.sh practicum
+----
+
+выполнит сборку файла `Course.pdf` в директории с курсом (`./practicum`)
+
+Чтобы задать имя создаваемого файла используется опция (`-o` или `--out`)
+
+[source,shell]
+----
+./scripts/build_course.sh --out new_coure practicum
+----
