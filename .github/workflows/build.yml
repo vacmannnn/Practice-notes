@@ -14,4 +14,4 @@ jobs:
             - name: Build course
               run: |
                 apk add --no-cache pandoc
-                bin/bash -x ./scripts/build_course.sh practicum
+                /bin/bash -x ./scripts/build_course.sh practicum
